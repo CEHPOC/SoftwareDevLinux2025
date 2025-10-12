@@ -1,5 +1,6 @@
 set pagination off
 set logging enabled on
+tty /dev/null
 
 set $i = 0
 b 62 if ($i>=28 && $i<36)

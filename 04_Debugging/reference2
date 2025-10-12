@@ -1,0 +1,8 @@
+$1 = {start = -100, stop = 100, step = 3, iter = -16}
+$2 = {start = -100, stop = 100, step = 3, iter = -13}
+$3 = {start = -100, stop = 100, step = 3, iter = -10}
+$4 = {start = -100, stop = 100, step = 3, iter = -7}
+$5 = {start = -100, stop = 100, step = 3, iter = -4}
+$6 = {start = -100, stop = 100, step = 3, iter = -1}
+$7 = {start = -100, stop = 100, step = 3, iter = 2}
+$8 = {start = -100, stop = 100, step = 3, iter = 5}
