@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <ctype.h>
 #include <rhash.h>
+#include "config.h"
 
 #ifdef USE_READLINE
 #include <readline/readline.h>
@@ -43,7 +44,7 @@ void hash_file(const char *algorithm, const char *argument, int is_upper){
 
 	rhash_print_bytes(output, digest, rhash_get_digest_size(hash_id), (output_type | RHPR_UPPERCASE));
 
-	printf("%s (%s) = %s\n", rhash_get_name(hash_id), argument, output);
+	printf("%s  -\n", output);
 }
 
 void hash_string(const char *algorithm, const char *argument, int is_upper){
@@ -68,7 +69,7 @@ void hash_string(const char *algorithm, const char *argument, int is_upper){
 
 	rhash_print_bytes(output, digest, rhash_get_digest_size(hash_id), (output_type | RHPR_UPPERCASE));
 
-	printf("%s (%s) = %s\n", rhash_get_name(hash_id), argument, output);
+	printf("%s  -\n", output);
 }
 
 void parse(char *command){
@@ -79,7 +80,7 @@ void parse(char *command){
 
 	char *token = strtok(command, " ");
 	if (token == NULL){
-		fprintf(stderr, "Не хватает аргументов\n");
+		fprintf(stderr, "Не хватает названия алгоритма\n");
 		return;
 	}
 
@@ -88,7 +89,7 @@ void parse(char *command){
 
 	token = strtok(NULL, " ");
 	if (token == NULL) {
-        	fprintf(stderr, "Не хватает аргументов\n");
+        	fprintf(stderr, "Не хватает второго аргумента\n");
         	return;
     	}
 	strncpy(argument, token, sizeof(argument)-1);
@@ -112,14 +113,16 @@ int main(){
 
 	while (1) {
 #ifdef USE_READLINE
-    		command = readline(">> ");
+    		command = readline("");
+		if(command == NULL) break;
+		add_history(command);
 #else
-        	printf(">> ");
+        	//printf(">> ");
 		read = getline(&command, &len, stdin); 
         	if ( read == -1) {
             		break; 
 		}
-		command[read-1]='\0';
+		//command[read-1]='\0';
 #endif
 
 		parse(command);
