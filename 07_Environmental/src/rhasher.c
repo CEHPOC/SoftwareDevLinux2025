@@ -5,6 +5,11 @@
 #include <ctype.h>
 #include <rhash.h>
 
+#ifdef USE_READLINE
+#include <readline/readline.h>
+#include <readline/history.h>
+#endif
+
 int get_hash_id(const char* algorithm) {
     if (strcasecmp(algorithm, "MD5") == 0)
         return RHASH_MD5;
@@ -106,13 +111,16 @@ int main(){
 	rhash_library_init();
 
 	while (1) {
+#ifdef USE_READLINE
+    		command = readline(">> ");
+#else
         	printf(">> ");
 		read = getline(&command, &len, stdin); 
         	if ( read == -1) {
             		break; 
 		}
-
 		command[read-1]='\0';
+#endif
 
 		parse(command);
 
