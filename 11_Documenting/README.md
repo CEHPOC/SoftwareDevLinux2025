@@ -11,9 +11,8 @@ autoreconf -fisv && ./configure && make
 ```shell
 LANG=ru_RU.UTF-8 ./numbergame
 ```
-Генерация документации и привязка man страницы
+Привязка man страницы
 ```shell
-make doxy  
 export MANPATH=$MANPATH:$PWD/docs/man
 ```
 Удаление генератов

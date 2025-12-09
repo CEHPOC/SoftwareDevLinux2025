@@ -177,6 +177,10 @@ int main(int argc, char *argv[]){
 		print_help();
 		return 0;
 	}
+	else if(argc>1 && strcmp(argv[1],"--version")==0){
+		printf("number game 1.0");
+		return 0;
+	}
 	else{
 		printf(_("Guess number from %d to %d\n"), left, right);
 		int res = guess_common(left, right);

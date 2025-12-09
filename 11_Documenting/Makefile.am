@@ -8,9 +8,18 @@ numbergame_SOURCES=src/numbergame.c
 
 AUTOMAKE_OPTIONS = foreign
 
-doxy: Doxyfile.in
-	doxygen Doxyfile.in
+@DX_RULES@
 
+all-local: man
+
+man: numbergame
+	mkdir -p docs/man/man1
+	help2man -N ./$< > docs/man/man1/$<.1
+
+install-data-local:
+	mkdir -p $(DESTDIR)/$(docdir)
+	cp -a docs/html $(DESTDIR)/$(docdir)
+	cp -a docs/man $(DESTDIR)/$(docdir)
 
 $(RU)/$(PACKAGE).mo: po/ru/numbergame.po
 	mkdir -p `dirname $@`
