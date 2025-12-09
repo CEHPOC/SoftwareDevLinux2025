@@ -15,16 +15,22 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <libintl.h>
+#include <locale.h>
+#include <stdlib.h>
+#include "config.h"
 
+#define _(STRING) gettext(STRING)
+#define LOCALE_PATH "."
 
 /**
  * @brief Вывод справки
  */
 void print_help(){
-	printf("Number guess game\n");
-	printf("./numbergame [-r | --help]\n");
-	printf("-r - переход в римскую запись\n");
-	printf("--help - показать эту справку\n");
+	printf(_("Number guess game\n"));
+	printf(_("Usage: ./numbergame [-r | --help]\n"));
+	printf(_("-r - in roman system\n"));
+	printf(_("--help - show this text\n"));
 }
 
 /**
@@ -59,6 +65,7 @@ int toDec(char *str){
                         return i;
                 }
         }
+	return -1;
 }
 
 /**
@@ -87,21 +94,21 @@ char *guess_roman(int left, int right){
 			return toRoman(left);
 		}
 		else{
-			printf("Число>%s?(Yes/No)", toRoman(mid));
+			printf(_("Your number more than %s?(Yes/No)"), toRoman(mid));
 			if (fgets(answer, 100, stdin) == NULL) {
-            			printf("Ошибка: закрытие стандартного ввода\n");
+            			printf(_("Error: stdin is closed\n"));
 				return "-1";
         		}
 			answer[strcspn(answer, "\n")] = '\0';
-			if (strcmp(answer, "Yes") != 0 && strcmp(answer, "No") != 0) {
-            			printf("Ошибка: возможны только ответы 'Yes' или 'No'\n");
+			if (strcmp(answer, _("Yes")) != 0 && strcmp(answer, _("No")) != 0) {
+            			printf(_("Error: only 'Yes' and 'No' are allowed\n"));
             			continue; 
 			}
-			if (strcmp(answer, "Yes") == 0) {
+			if (strcmp(answer, _("Yes")) == 0) {
 				left = mid + 1;
             			continue; 
 			}
-			if (strcmp(answer, "No") == 0) {
+			if (strcmp(answer, _("No")) == 0) {
 				right = mid;
             			continue; 
 			}
@@ -124,21 +131,21 @@ int guess_common(int left, int right){
 			return left;
 		}
 		else{
-			printf("Число>%d?(Yes/No)", mid);
+			printf(_("Your number more than %d?(Yes/No)"), mid);
 			if (fgets(answer, 100, stdin) == NULL) {
-            			printf("Ошибка: закрытие стандартного ввода\n");
+            			printf(_("Error: stdin is closed\n"));
 				return -1;
         		}
 			answer[strcspn(answer, "\n")] = '\0';
-			if (strcmp(answer, "Yes") != 0 && strcmp(answer, "No") != 0) {
-            			printf("Ошибка: возможны только ответы 'Yes' или 'No'\n");
+			if (strcmp(answer, _("Yes")) != 0 && strcmp(answer, _("No")) != 0) {
+            			printf(_("Error: only 'Yes' and 'No' are allowed\n"));
             			continue; 
 			}
-			if (strcmp(answer, "Yes") == 0) {
+			if (strcmp(answer, _("Yes")) == 0) {
 				left = mid + 1;
             			continue; 
 			}
-			if (strcmp(answer, "No") == 0) {
+			if (strcmp(answer, _("No")) == 0) {
 				right = mid;
             			continue; 
 			}
@@ -151,27 +158,32 @@ int guess_common(int left, int right){
  * @brief Запуск и разбор флагов
  */
 int main(int argc, char *argv[]){
+
+	setlocale(LC_ALL, "");
+        bindtextdomain(PACKAGE, LOCALE_PATH);
+        textdomain(PACKAGE);
+
 	int left = 1;
 	int right = 100;
 	if(argc>1 && strcmp(argv[1],"-r")==0){
-		printf("Загадайте число от %s до %s\n", toRoman(left), toRoman(right));
+		printf(_("Guess number from %s to %s\n"), toRoman(left), toRoman(right));
 		char *res = guess_roman(left, right);
-		if(res == "-1"){
+		if(strcmp(res, "-1")){
 			return 1;
 		}
-        	printf("Ваше число: %s\n", res);
+        	printf(_("Your number is %s\n"), res);
 	}
 	else if(argc>1 && strcmp(argv[1],"--help")==0){
 		print_help();
 		return 0;
 	}
 	else{
-		printf("Загадайте число от %d до %d\n", left, right);
+		printf(_("Guess number from %d to %d\n"), left, right);
 		int res = guess_common(left, right);
 		if(res == -1){
 			return 1;
 		}
-		printf("Ваше число: %d\n", res);
+		printf(_("Your number is %d\n"), res);
 	}
 	return 0;
 }
