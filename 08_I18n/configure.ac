@@ -14,6 +14,7 @@ AC_PROG_CC
 
 # Checks for header files.
 AC_CHECK_HEADERS([libintl.h])
+AC_CHECK_HEADERS([locale.h stdlib.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 

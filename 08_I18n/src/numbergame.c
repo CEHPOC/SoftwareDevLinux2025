@@ -6,6 +6,7 @@
 #include "config.h"
 
 #define _(STRING) gettext(STRING)
+#define LOCALE_PATH "."
 
 int guess_common(int left, int right){
 	char answer[100];
@@ -41,8 +42,8 @@ int guess_common(int left, int right){
 int main(int argc, char *argv[]){
 
 	setlocale(LC_ALL, "");
-	bindtextdomain("numbergame", "/usr/share/locale");
-	textdomain("numbergame");
+	bindtextdomain(PACKAGE, LOCALE_PATH);
+	textdomain(PACKAGE);
 
 	int left = 1;
 	int right = 100;
