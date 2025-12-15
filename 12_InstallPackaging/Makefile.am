@@ -1,4 +1,4 @@
-SUBDIRS = src 
+SUBDIRS = src tests 
 
 RU = ru/LC_MESSAGES
 pkgdata_DATA = $(RU)/$(PACKAGE).mo

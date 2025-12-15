@@ -9,4 +9,3 @@ numbergame_SOURCES = numbergame.c
 
 numbergame_LDADD = libguesser.la
 
-include_HEADERS = guesser.h

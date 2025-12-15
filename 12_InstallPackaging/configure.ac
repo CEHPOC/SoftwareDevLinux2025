@@ -21,8 +21,11 @@ AC_CHECK_HEADERS([locale.h stdlib.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
+# Joint pkgconfig library/include check and variable definition.
+PKG_CHECK_MODULES([CHECK],[check >= 0.9.6])
+
 # Checks for library functions.
 AC_CHECK_FUNCS([setlocale strcspn])
-AC_CONFIG_FILES([Makefile src/Makefile Doxyfile])
+AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile Doxyfile])
 
 AC_OUTPUT
