@@ -3,9 +3,10 @@
 
 AC_PREREQ([2.71])
 AC_INIT([number game], [1.0], [example@example.com], [numbergame])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
+LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/numbergame.c])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([foreign subdir-objects])
 
 DX_INIT_DOXYGEN([numbergame], [Doxyfile], [docs])
 
@@ -22,6 +23,6 @@ AC_CHECK_HEADERS([locale.h stdlib.h])
 
 # Checks for library functions.
 AC_CHECK_FUNCS([setlocale strcspn])
-AC_CONFIG_FILES([Makefile Doxyfile])
+AC_CONFIG_FILES([Makefile src/Makefile Doxyfile])
 
 AC_OUTPUT
