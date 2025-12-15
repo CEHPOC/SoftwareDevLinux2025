@@ -86,18 +86,18 @@ char* toRoman(int n){
  * @param left левая граница
  * @param right правая граница
  */
-char *guess_roman(int left, int right){
+int guess_roman(int left, int right){
 	char answer[100];
 	while(left<=right){
 		int mid = (left+right)/2;
 		if(left == right){
-			return toRoman(left);
+			return left;
 		}
 		else{
-			printf(_("Your number more than %s?(Yes/No)"), toRoman(mid));
+			printf(_("Your number more than %s?(Yes/No)\n"), toRoman(mid));
 			if (fgets(answer, 100, stdin) == NULL) {
             			printf(_("Error: stdin is closed\n"));
-				return "-1";
+				return -1;
         		}
 			answer[strcspn(answer, "\n")] = '\0';
 			if (strcmp(answer, _("Yes")) != 0 && strcmp(answer, _("No")) != 0) {
@@ -114,7 +114,7 @@ char *guess_roman(int left, int right){
 			}
 		}
 	}
-	return "-1";
+	return -1;
 }
 
 /**
@@ -131,7 +131,7 @@ int guess_common(int left, int right){
 			return left;
 		}
 		else{
-			printf(_("Your number more than %d?(Yes/No)"), mid);
+			printf(_("Your number more than %d?(Yes/No)\n"), mid);
 			if (fgets(answer, 100, stdin) == NULL) {
             			printf(_("Error: stdin is closed\n"));
 				return -1;
@@ -167,18 +167,18 @@ int main(int argc, char *argv[]){
 	int right = 100;
 	if(argc>1 && strcmp(argv[1],"-r")==0){
 		printf(_("Guess number from %s to %s\n"), toRoman(left), toRoman(right));
-		char *res = guess_roman(left, right);
-		if(strcmp(res, "-1")){
+		int res = guess_roman(left, right);
+		if(res == -1){
 			return 1;
 		}
-        	printf(_("Your number is %s\n"), res);
+        	printf(_("Your number is %s\n"), toRoman(res));
 	}
 	else if(argc>1 && strcmp(argv[1],"--help")==0){
 		print_help();
 		return 0;
 	}
 	else if(argc>1 && strcmp(argv[1],"--version")==0){
-		printf("number game 1.0");
+		printf("number game 1.0\n");
 		return 0;
 	}
 	else{
