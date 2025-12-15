@@ -1,21 +1,46 @@
-# Задание 08_I18n  
-Сборка и установка:
+# Задание 12_InstallPackaging  
+## Сборка и установка:
 ```shell
 autoreconf -fisv && ./configure && make
-```  
-Запуск без перевода на русский:
-```shell
-./numbergame
 ```
-Запуск с переводом на русский:
+## Для установки в систему:
 ```shell
-LANG=ru_RU.UTF-8 ./numbergame
+sudo make install
 ```
-Привязка man страницы
+---  
+## Запуск:
 ```shell
-export MANPATH=$MANPATH:$PWD/docs/man
+src/numbergame
 ```
-Удаление генератов
+## Запуск с переводом на русский:
+```shell
+LANG=ru_RU.UTF-8 src/numbergame
+```
+## Запуск, если усатновлено в систему
+```shell
+numbergame
+```
+---
+## Тесты
+```shell
+make check
+```
+---
+## Документация
+```shell
+./docs/html/index.html
+```
+## man
+При установке в систему будет доступна по
+```
+man numbergame
+```
+В ином случае доступна локально
+```
+man ./numbergame.1
+```
+---
+## Удаление генератов
 ```shell
 make gitclean
 ```
