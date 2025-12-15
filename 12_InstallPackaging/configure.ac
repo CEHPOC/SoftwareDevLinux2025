@@ -7,7 +7,7 @@ AC_CONFIG_SRCDIR([src/numbergame.c])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 
-DX_INIT_DOXYGEN([numbergame])
+DX_INIT_DOXYGEN([numbergame], [Doxyfile], [docs])
 
 # Checks for programs.
 AC_PROG_CC
