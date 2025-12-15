@@ -1,0 +1,89 @@
+# Russian translations for Nubmergame package.
+# Copyright (C) 2025 THE Nubmergame'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Nubmergame package.
+# Dmitrii <example@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Nubmergame 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-09 12:47+0300\n"
+"PO-Revision-Date: 2025-12-09 10:26+0300\n"
+"Last-Translator: Dmitrii <example@example.com>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/numbergame.c:33
+#, c-format
+msgid "--help - show this text\n"
+msgstr "--help - показать эту справку\n"
+
+#: src/numbergame.c:32
+#, c-format
+msgid "-r - in roman system\n"
+msgstr "-r - переход в римускю систему\n"
+
+#: src/numbergame.c:103 src/numbergame.c:140
+#, c-format
+msgid "Error: only 'Yes' and 'No' are allowed\n"
+msgstr "Ошибка: разрешены только ответы 'Да' и 'Нет'\n"
+
+#: src/numbergame.c:98 src/numbergame.c:135
+#, c-format
+msgid "Error: stdin is closed\n"
+msgstr "Ошибка: закрытие стандартного ввода\n"
+
+#: src/numbergame.c:175
+#, c-format
+msgid "Guess number from %d to %d\n"
+msgstr "Загадайте число от %d до %d\n"
+
+#: src/numbergame.c:163
+#, c-format
+msgid "Guess number from %s to %s\n"
+msgstr "Загадайте число от %s до %s\n"
+
+#: src/numbergame.c:102 src/numbergame.c:110 src/numbergame.c:139
+#: src/numbergame.c:147
+msgid "No"
+msgstr "Нет"
+
+#: src/numbergame.c:30
+#, c-format
+msgid "Number guess game\n"
+msgstr "Игра Number guess\n"
+
+#: src/numbergame.c:31
+#, c-format
+msgid "Usage: ./numbergame [-r | --help]\n"
+msgstr "Использование: ./numbergame [-r | --help]\n"
+
+#: src/numbergame.c:102 src/numbergame.c:106 src/numbergame.c:139
+#: src/numbergame.c:143
+msgid "Yes"
+msgstr "Да"
+
+#: src/numbergame.c:180
+#, c-format
+msgid "Your number is %d\n"
+msgstr "Ваше число: %d\n"
+
+#: src/numbergame.c:168
+#, c-format
+msgid "Your number is %s\n"
+msgstr "Ваше число: %s\n"
+
+#: src/numbergame.c:133
+#, c-format
+msgid "Your number more than %d?(Yes/No)"
+msgstr "Ваше число больше чем %d? (Да/Нет)"
+
+#: src/numbergame.c:96
+#, c-format
+msgid "Your number more than %s?(Yes/No)"
+msgstr "Ваше число больше чем %s? (Да/Нет)"
